@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+
+    </style>
+    <script language="javascript" type="text/javascript" src="js/eqgraph.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="200" height="200"></canvas>
+    <script>
+      var myGraph = new EqGraph({
+        canvasId: 'myCanvas',
+        minX: -6,
+        minY: -2,
+        maxX: 6,
+        maxY: 2,
+        unitsPerTick: 1
+      });
+
+       function sigmoid(z){ return  1.0/(1.0+Math.exp(-z));}
+       myGraph.drawEquation(sigmoid , 'green', 2);
+       
+       function tanh(z){ return (Math.exp(z)-Math.exp(-z))/(Math.exp(z)+Math.exp(-z));}
+      myGraph.drawEquation(tanh , 'red', 2);
+      
+      function step(z){ 
+        if(z < 2){
+          return 0;
+        }else{
+          return 1;
+        }
+      }
+       myGraph.drawEquation(step , 'blue', 2);
+
+    </script>
+  </body>
+</html>
